@@ -15,22 +15,25 @@ function App() {
     const resJson = await response.json();
     if (resJson.Search){
       setMovies(resJson.Search)
-
     }
   };
+
   useEffect(()=> {
     getMovieRequest(searchValue);
-  },[searchValue]);
+  },
+  [searchValue]
+  );
+
+
   return (
     <div className='container-fluid movie-app'>
       <div className="row d-flex align-items-center mt-4 mb-4">
         <MovieListHeading heading = "Movies"/>
+      <SearchBox searchValue = {searchValue} setSearchValue = {setSearchValue}/>
       </div>
       <div className='row'>
       <MovieList movies = {movies}/>
-      <SearchBox searchValue = {searchValue} setSearchValue = {setSearchValue}/>
       </div>
-
     </div>
 
   );

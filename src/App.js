@@ -7,19 +7,24 @@ import SearchBox from './components/SearchBox';
 
 
 function App() {
+
   const [movies, setMovies] = useState([]);
-  const [searchValue,setSearchValue] = useState();
-  const getMovieRequest = async(searchValue) => {
+  const [searchValue,setSearchValue] = useState("");
+
+  const getMovieRequest = async (searchValue) => {
     const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=fbabb382`
+   
     const response = await fetch(url);
     const resJson = await response.json();
+   
     if (resJson.Search){
       setMovies(resJson.Search)
     }
-  };
 
+  }
+  
   useEffect(()=> {
-    getMovieRequest(searchValue);
+    getMovieRequest(searchValue)
   },
   [searchValue]
   );

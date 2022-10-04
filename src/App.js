@@ -4,11 +4,12 @@ import "./App.css"
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
-
+import AddFavorites from './components/AddFavorites';
 
 function App() {
 
   const [movies, setMovies] = useState([]);
+  const [favourites,setFavourites] = useState([])
   const [searchValue,setSearchValue] = useState("");
 
   const getMovieRequest = async (searchValue) => {
@@ -22,6 +23,8 @@ function App() {
     }
 
   }
+
+
   
   useEffect(()=> {
     getMovieRequest(searchValue)
@@ -30,6 +33,11 @@ function App() {
   );
 
 
+  const addFavouriteMovie = (movie)=>{
+    const newFavouriteList = [...favourites, movie]
+    setFavourites(newFavouriteList)
+  }
+
   return (
     <div className='container-fluid movie-app'>
       <div className="row d-flex align-items-center mt-4 mb-4">
@@ -37,7 +45,7 @@ function App() {
       <SearchBox searchValue = {searchValue} setSearchValue = {setSearchValue}/>
       </div>
       <div className='row'>
-      <MovieList movies = {movies}/>
+      <MovieList movies = {movies} handleFavourites={addFavouriteMovie} FavoriteComponent={AddFavorites}/>
       </div>
     </div>
 

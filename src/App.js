@@ -47,6 +47,9 @@ function App() {
       <div className='row'>
       <MovieList movies = {movies} handleFavourites={addFavouriteMovie} FavoriteComponent={AddFavorites}/>
       </div>
+      <div className='row'>
+      <MovieList movies = {favourites} handleFavourites={addFavouriteMovie} FavoriteComponent={AddFavorites}/>
+      </div>
     </div>
 
   );

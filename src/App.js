@@ -31,17 +31,13 @@ function App() {
   
   useEffect(()=> {
     getMovieRequest(searchValue)
-  },
-  [searchValue]
-  );
+  },[searchValue]);
 
   useEffect(()=> {
-    const prevFavorites = JSON.parse(localStorage.getItem('react-movie-app-favorites'))
-    setFavourites(prevFavorites)
-
-  },
-  [searchValue]
-  );
+     const prevFavorites = JSON.parse(localStorage.getItem('react-movie-app-favorites'))
+     console.log("here", prevFavorites)
+     setFavourites(prevFavorites)
+   },[]);
 
   const addFavouriteMovie = (movie)=>{
     if (favourites.indexOf(movie) !== -1) return

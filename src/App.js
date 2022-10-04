@@ -5,6 +5,7 @@ import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import AddFavorites from './components/AddFavorites';
+import RemoveFavourites from './components/RemoveFavourites';
 
 function App() {
 
@@ -34,8 +35,14 @@ function App() {
 
 
   const addFavouriteMovie = (movie)=>{
+    console.log(movie)
     const newFavouriteList = [...favourites, movie]
+    // console.log(newFavouriteList)
     setFavourites(newFavouriteList)
+  }
+  const removeFavouriteMovie = (movie)=>{
+    const newFavourites = favourites.filter(item => item.Title !== movie.Title)
+    setFavourites(newFavourites)
   }
 
   return (
@@ -47,8 +54,9 @@ function App() {
       <div className='row'>
       <MovieList movies = {movies} handleFavourites={addFavouriteMovie} FavoriteComponent={AddFavorites}/>
       </div>
+      <MovieListHeading heading = "Favourites"/>
       <div className='row'>
-      <MovieList movies = {favourites} handleFavourites={addFavouriteMovie} FavoriteComponent={AddFavorites}/>
+      <MovieList movies = {favourites} handleFavourites={removeFavouriteMovie} FavoriteComponent={RemoveFavourites}/>
       </div>
     </div>
 

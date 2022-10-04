@@ -35,7 +35,7 @@ function App() {
 
 
   const addFavouriteMovie = (movie)=>{
-    console.log(movie)
+    if (favourites.indexOf(movie) !== -1) return
     const newFavouriteList = [...favourites, movie]
     // console.log(newFavouriteList)
     setFavourites(newFavouriteList)
